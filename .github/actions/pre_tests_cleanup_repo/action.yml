@@ -1,0 +1,13 @@
+# .github/actions/cleanup-repo.yml
+
+name: Cleanup Repository
+
+runs:
+  using: 'composite'
+
+permissions:
+  contents: write
+
+steps:
+  - name: Cleanup repository
+    run: docker run -v "${{ github.workspace }}:/workspace" -u 0:0 bash -c "rm -rf /workspace/*"
